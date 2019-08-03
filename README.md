@@ -92,6 +92,8 @@ docker exec -it magic_mirror /bin/bash
 
 运行 `git pull && npm install`
 
+可能要事先运行 `git reset --hard`
+
 运行完毕后打开 lazydocker，重启 container 即可。刷新浏览器，已经升级到最新的版本了。
 
 
