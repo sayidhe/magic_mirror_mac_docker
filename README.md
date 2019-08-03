@@ -92,12 +92,9 @@ docker exec -it magic_mirror /bin/bash
 运行完毕后打开 lazydocker，重启 container 即可。刷新浏览器，已经升级到最新的版本了。
 
 
-
-
-
-参考
-MM docker container problem with mac and linux
-Can I change the default IP from 0.0.0.0 when binding?
-MichMich/MagicMirror > Docker
-bastilimbach/docker-MagicMirror
+## 参考
+- [MM docker container problem with mac and linux](https://forum.magicmirror.builders/topic/6652/mm-docker-container-problem-with-mac-and-linux?page=1)
+- [Can I change the default IP from 0.0.0.0 when binding?](https://forums.docker.com/t/can-i-change-the-default-ip-from-0-0-0-0-when-binding/30358/3)
+- [MichMich/MagicMirror > Docker](https://github.com/MichMich/MagicMirror#docker)
+- [bastilimbach/docker-MagicMirror](https://github.com/bastilimbach/docker-MagicMirror)
 
