@@ -41,25 +41,8 @@ Module.register("clock",{
 
 		// Schedule update interval.
 		var self = this;
-		self.second = 0;
-		self.minute = 0;
-		self.lastDisplayedMinute = null;
 		setInterval(function() {
-			if (self.config.displaySeconds || self.lastDisplayedMinute !== moment().minute()) {
-				self.updateDom();
-			}
-			if (self.second === 59) {
-				self.second = 0;
-				if (self.minute === 59){
-					self.minute = 0;
-				} else {
-					self.minute++;
-				}
-				self.sendNotification("CLOCK_MINUTE", self.minute);
-			} else {
-				self.second++;
-				self.sendNotification("CLOCK_SECOND", self.second);
-			}
+			self.updateDom();
 		}, 1000);
 
 		// Set locale.
@@ -79,12 +62,12 @@ Module.register("clock",{
 		var timeWrapper = document.createElement("div");
 		var secondsWrapper = document.createElement("sup");
 		var periodWrapper = document.createElement("span");
-		var weekWrapper = document.createElement("div");
+		var weekWrapper = document.createElement("div")
 		// Style Wrappers
 		dateWrapper.className = "date normal medium";
 		timeWrapper.className = "time bright large light";
 		secondsWrapper.className = "dimmed";
-		weekWrapper.className = "week dimmed medium";
+		weekWrapper.className = "week dimmed medium"
 
 		// Set content of wrappers.
 		// The moment().format("h") method has a bug on the Raspberry Pi.
@@ -92,7 +75,6 @@ Module.register("clock",{
 		// See issue: https://github.com/MichMich/MagicMirror/issues/181
 		var timeString;
 		var now = moment();
-		this.lastDisplayedMinute = now.minute();
 		if (this.config.timezone) {
 			now.tz(this.config.timezone);
 		}
@@ -150,15 +132,14 @@ Module.register("clock",{
 			clockCircle.style.width = this.config.analogSize;
 			clockCircle.style.height = this.config.analogSize;
 
-			if (this.config.analogFace !== "" && this.config.analogFace !== "simple" && this.config.analogFace !== "none") {
+			if (this.config.analogFace != "" && this.config.analogFace != "simple" && this.config.analogFace != "none") {
 				clockCircle.style.background = "url("+ this.data.path + "faces/" + this.config.analogFace + ".svg)";
 				clockCircle.style.backgroundSize = "100%";
 
 				// The following line solves issue: https://github.com/MichMich/MagicMirror/issues/611
-				// clockCircle.style.border = "1px solid black";
-				clockCircle.style.border = "rgba(0, 0, 0, 0.1)"; //Updated fix for Issue 611 where non-black backgrounds are used
+				clockCircle.style.border = "1px solid black";
 
-			} else if (this.config.analogFace !== "none") {
+			} else if (this.config.analogFace != "none") {
 				clockCircle.style.border = "2px solid white";
 			}
 			var clockFace = document.createElement("div");

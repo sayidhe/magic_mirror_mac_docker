@@ -31,13 +31,9 @@
   padding-right: 0;
 }
 
-.weather .precipitation {
+.weather .rain {
   padding-left: 20px;
   padding-right: 0;
-}
-
-.weather tr .weathericon {
-  line-height: 25px;
 }
 
 .weather tr.colored .min-temp {

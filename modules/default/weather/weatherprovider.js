@@ -9,6 +9,7 @@
  * This class is the blueprint for a weather provider.
  */
 
+
 /**
  * Base BluePrint for the WeatherProvider
  */
@@ -22,14 +23,15 @@ var WeatherProvider = Class.extend({
 	weatherForecastArray: null,
 	fetchedLocationName: null,
 
-	// The following properties will be set automatically.
+	// The following properties will be set automaticly.
 	// You do not need to overwrite these properties.
 	config: null,
 	delegate: null,
 	providerIdentifier: null,
 
+
 	// Weather Provider Methods
-	// All the following methods can be overwritten, although most are good as they are.
+	// All the following methods can be overwrited, although most are good as they are.
 
 	// Called when a weather provider is initialized.
 	init: function(config) {
@@ -49,13 +51,13 @@ var WeatherProvider = Class.extend({
 	},
 
 	// This method should start the API request to fetch the current weather.
-	// This method should definitely be overwritten in the provider.
+	// This method should definetly be overwritten in the provider.
 	fetchCurrentWeather: function() {
 		Log.warn(`Weather provider: ${this.providerName} does not subclass the fetchCurrentWeather method.`);
 	},
 
 	// This method should start the API request to fetch the weather forecast.
-	// This method should definitely be overwritten in the provider.
+	// This method should definetly be overwritten in the provider.
 	fetchWeatherForecast: function() {
 		Log.warn(`Weather provider: ${this.providerName} does not subclass the fetchWeatherForecast method.`);
 	},
@@ -101,7 +103,7 @@ var WeatherProvider = Class.extend({
 		this.delegate.updateAvailable(this);
 	},
 
-	// A convenience function to make requests. It returns a promise.
+	// A convinience function to make requests. It returns a promise.
 	fetchData: function(url, method = "GET", data = null) {
 		return new Promise(function(resolve, reject) {
 			var request = new XMLHttpRequest();
@@ -111,12 +113,12 @@ var WeatherProvider = Class.extend({
 					if (this.status === 200) {
 						resolve(JSON.parse(this.response));
 					} else {
-						reject(request);
+						reject(request)
 					}
 				}
 			};
 			request.send();
-		});
+		})
 	}
 });
 

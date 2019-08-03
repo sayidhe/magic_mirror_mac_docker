@@ -65,10 +65,8 @@ module.exports = NodeHelper.create({
 				data.module = sg.module;
 				if (!err) {
 					sg.git.log({"-1": null}, function(err, data2) {
-						if (!err && data2.latest && "hash" in data2.latest) {
-							data.hash = data2.latest.hash;
-							self.sendSocketNotification("STATUS", data);
-						}
+						data.hash = data2.latest.hash;
+						self.sendSocketNotification("STATUS", data);
 					});
 				}
 			});
@@ -79,7 +77,7 @@ module.exports = NodeHelper.create({
 
 	scheduleNextFetch: function(delay) {
 		if (delay < 60 * 1000) {
-			delay = 60 * 1000;
+			delay = 60 * 1000
 		}
 
 		var self = this;
