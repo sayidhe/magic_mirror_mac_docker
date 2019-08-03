@@ -60,11 +60,14 @@ if (typeof module !== "undefined") {module.exports = config;}
 设置 docker 的主机地址 “0.0.0.0” 为 “127.0.0.1” 进行 `localhost:80` 的访问：
 
 进入 `Docker > Preferences > Daemon > Advanced` 从 Docker 菜单栏，添加：
-"ip" : "127.0.0.1",
+ `"ip" : "127.0.0.1",`
+
 添加后如下：
-```
+
+
+```json
 {
-	"ip" : "127.0.0.1",
+  "ip" : "127.0.0.1",
   "debug" : true,
   "experimental" : false
 }
