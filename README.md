@@ -14,6 +14,7 @@ docker run  -d \
 	--restart always \
 	--volume ~/docker/magic_mirror/config:/opt/magic_mirror/config \
 	--volume ~/docker/magic_mirror/modules:/opt/magic_mirror/modules \
+	--volume /etc/localtime:/etc/localtime:ro \
 	--name magic_mirror \
     bastilimbach/docker-magicmirror
 ```
@@ -27,9 +28,9 @@ docker run  -d \
 
 ```javascript
 var config = {
-	address: "",
+	address: "0.0.0.0",
 	port: 8080,
-  	ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.2.1/120", "192.168.199.192", "172.17.0.1"],
+  ipWhitelist: [],
 	language: "en",
 	timeFormat: 24,
 	units: "metric",
@@ -55,25 +56,24 @@ if (typeof module !== "undefined") {module.exports = config;}
  0
 ```
 
-其中 `ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.2.1/120", "192.168.199.192", "172.17.0.1"]`, 用来白名单主机的 ip 地址，进行访问。
+其中 `ipWhitelist: []`, 用来白名单主机的 ip 地址，进行访问，不填表示允许所有 ip。
 
-设置 docker 的主机地址 “0.0.0.0” 为 “127.0.0.1” 进行 `localhost:80` 的访问：
+查看 Docker IP 地址命令 `docker inspect magic_mirror --format='{{.NetworkSettings.IPAddress}}'`
 
-进入 `Docker > Preferences > Daemon > Advanced` 从 Docker 菜单栏，添加：
- `"ip" : "127.0.0.1",`
+【以下内容暂不需要】
 
-添加后如下：
-
-
-```json
-{
-  "ip" : "127.0.0.1",
-  "debug" : true,
-  "experimental" : false
-}
 ```
-
+设置 docker 的主机地址 “0.0.0.0” 为 “127.0.0.1” 进行 localhost:80 的访问：
+从 Docker 菜单栏，进入 Docker > Preferences > Docker Engine ，添加：
+ "ip" : "127.0.0.1",
+添加后如下：
+    {
+      "ip" : "127.0.0.1",
+      "debug" : true,
+      "experimental" : false
+    }
 点击 Apply & Restart，重启 Docker，让配置生效。
+```
 
 回到 magic_mirror 目录，运行 `./run.sh`，来运行 magic_mirror contianer。
 
