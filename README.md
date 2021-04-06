@@ -10,7 +10,7 @@
 #!/bin/bash
 
 docker run  -d \
-	--publish 80:8080 \
+	--publish 8080:8080 \
 	--restart always \
 	--volume ~/docker/magic_mirror/config:/opt/magic_mirror/config \
 	--volume ~/docker/magic_mirror/modules:/opt/magic_mirror/modules \
@@ -20,7 +20,7 @@ docker run  -d \
 ```
 
 注意 ：
-`--publish 80:8080 \ ` 表示通过 80 端口去访问 docker container 的 `8080` 端口。
+`--publish 8080:8080 \ ` 表示通过 8080 端口去访问 docker container 的 `8080` 端口。
 
 `--volume ~/docker/magic_mirror/config:/opt/magic_mirror/config \ ` 使用的是当前的 config 文件夹。意思是同步挂载文件夹内容至 `Docker 中 magic_mirror/config`。
 
@@ -63,7 +63,7 @@ if (typeof module !== "undefined") {module.exports = config;}
 【以下内容暂不需要】
 
 ```
-设置 docker 的主机地址 “0.0.0.0” 为 “127.0.0.1” 进行 localhost:80 的访问：
+设置 docker 的主机地址 “0.0.0.0” 为 “127.0.0.1” 进行 localhost:8080 的访问：
 从 Docker 菜单栏，进入 Docker > Preferences > Docker Engine ，添加：
  "ip" : "127.0.0.1",
 添加后如下：
@@ -77,11 +77,11 @@ if (typeof module !== "undefined") {module.exports = config;}
 
 回到 magic_mirror 目录，运行 `./run.sh`，来运行 magic_mirror contianer。
 
-打开浏览器，访问 `http://localhost:80` 这时候就可以访问到 Docker 中运行的 MagicMirror 了
+打开浏览器，访问 `http://localhost:8080` 这时候就可以访问到 Docker 中运行的 MagicMirror 了
 
 ## 升级 MagicMirror
 
-访问 `localhost:80` ，这时候可能出现 MagicMirror 需要升级。
+访问 `localhost:8080` ，这时候可能出现 MagicMirror 需要升级。
 
 进入 docker 的 bash 中，host terminal 中运行。
 
